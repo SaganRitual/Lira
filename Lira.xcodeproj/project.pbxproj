@@ -11,6 +11,28 @@
 		D4D1EF1D2C1CFA3200003163 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF1C2C1CFA3200003163 /* ContentView.swift */; };
 		D4D1EF1F2C1CFA3400003163 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4D1EF1E2C1CFA3400003163 /* Assets.xcassets */; };
 		D4D1EF222C1CFA3400003163 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4D1EF212C1CFA3400003163 /* Preview Assets.xcassets */; };
+		D4D1EF2A2C1CFCDE00003163 /* DragManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF292C1CFCDE00003163 /* DragManager.swift */; };
+		D4D1EF2F2C1CFDD000003163 /* CoreGraphics+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF2B2C1CFDD000003163 /* CoreGraphics+Extensions.swift */; };
+		D4D1EF302C1CFDD000003163 /* SKNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF2C2C1CFDD000003163 /* SKNode+Extensions.swift */; };
+		D4D1EF312C1CFDD000003163 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF2D2C1CFDD000003163 /* String+Extensions.swift */; };
+		D4D1EF332C1CFDEA00003163 /* DragInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF322C1CFDEA00003163 /* DragInfo.swift */; };
+		D4D1EF352C1D1BEE00003163 /* TapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF342C1D1BEE00003163 /* TapManager.swift */; };
+		D4D1EF372C1D1C4E00003163 /* TapInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF362C1D1C4E00003163 /* TapInfo.swift */; };
+		D4D1EF392C1D8C5A00003163 /* SceneInputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF382C1D8C5A00003163 /* SceneInputManager.swift */; };
+		D4D1EF3C2C1D8D7E00003163 /* SpriteWorldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF3B2C1D8D7E00003163 /* SpriteWorldView.swift */; };
+		D4D1EF3E2C1D8E0A00003163 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF3D2C1D8E0A00003163 /* AppState.swift */; };
+		D4D1EF402C1D8E4600003163 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF3F2C1D8E4600003163 /* Game.swift */; };
+		D4D1EF422C1D8E9E00003163 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF412C1D8E9E00003163 /* Scene.swift */; };
+		D4D1EF442C1D8EC500003163 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF432C1D8EC500003163 /* Entity.swift */; };
+		D4D1EF462C1D8ECE00003163 /* SelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF452C1D8ECE00003163 /* SelectionController.swift */; };
+		D4D1EF492C1D8F2100003163 /* MoveHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF482C1D8F2100003163 /* MoveHandle.swift */; };
+		D4D1EF4B2C1D8F2800003163 /* RosizeHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF4A2C1D8F2800003163 /* RosizeHandle.swift */; };
+		D4D1EF4D2C1D90AB00003163 /* SceneInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF4C2C1D90AB00003163 /* SceneInfo.swift */; };
+		D4D1EF502C1D953100003163 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF4F2C1D953100003163 /* Component.swift */; };
+		D4D1EF522C1D985F00003163 /* Gremlin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF512C1D985F00003163 /* Gremlin.swift */; };
+		D4D1EF542C1D98AE00003163 /* Waypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF532C1D98AE00003163 /* Waypoint.swift */; };
+		D4D1EF572C1D9BAA00003163 /* SelectionMarquee.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF562C1D9BAA00003163 /* SelectionMarquee.swift */; };
+		D4D1EF592C1D9BCB00003163 /* SpriteWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF582C1D9BCB00003163 /* SpriteWorld.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +42,28 @@
 		D4D1EF1E2C1CFA3400003163 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4D1EF212C1CFA3400003163 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D4D1EF232C1CFA3400003163 /* Lira.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lira.entitlements; sourceTree = "<group>"; };
+		D4D1EF292C1CFCDE00003163 /* DragManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragManager.swift; sourceTree = "<group>"; };
+		D4D1EF2B2C1CFDD000003163 /* CoreGraphics+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CoreGraphics+Extensions.swift"; sourceTree = "<group>"; };
+		D4D1EF2C2C1CFDD000003163 /* SKNode+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKNode+Extensions.swift"; sourceTree = "<group>"; };
+		D4D1EF2D2C1CFDD000003163 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		D4D1EF322C1CFDEA00003163 /* DragInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragInfo.swift; sourceTree = "<group>"; };
+		D4D1EF342C1D1BEE00003163 /* TapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapManager.swift; sourceTree = "<group>"; };
+		D4D1EF362C1D1C4E00003163 /* TapInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapInfo.swift; sourceTree = "<group>"; };
+		D4D1EF382C1D8C5A00003163 /* SceneInputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneInputManager.swift; sourceTree = "<group>"; };
+		D4D1EF3B2C1D8D7E00003163 /* SpriteWorldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteWorldView.swift; sourceTree = "<group>"; };
+		D4D1EF3D2C1D8E0A00003163 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		D4D1EF3F2C1D8E4600003163 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		D4D1EF412C1D8E9E00003163 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		D4D1EF432C1D8EC500003163 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		D4D1EF452C1D8ECE00003163 /* SelectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionController.swift; sourceTree = "<group>"; };
+		D4D1EF482C1D8F2100003163 /* MoveHandle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveHandle.swift; sourceTree = "<group>"; };
+		D4D1EF4A2C1D8F2800003163 /* RosizeHandle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosizeHandle.swift; sourceTree = "<group>"; };
+		D4D1EF4C2C1D90AB00003163 /* SceneInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneInfo.swift; sourceTree = "<group>"; };
+		D4D1EF4F2C1D953100003163 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
+		D4D1EF512C1D985F00003163 /* Gremlin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gremlin.swift; sourceTree = "<group>"; };
+		D4D1EF532C1D98AE00003163 /* Waypoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waypoint.swift; sourceTree = "<group>"; };
+		D4D1EF562C1D9BAA00003163 /* SelectionMarquee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionMarquee.swift; sourceTree = "<group>"; };
+		D4D1EF582C1D9BCB00003163 /* SpriteWorld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteWorld.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,8 +96,17 @@
 		D4D1EF192C1CFA3200003163 /* Lira */ = {
 			isa = PBXGroup;
 			children = (
-				D4D1EF1A2C1CFA3200003163 /* LiraApp.swift */,
+				D4D1EF4E2C1D951D00003163 /* Component */,
+				D4D1EF472C1D8F1000003163 /* Entity */,
+				D4D1EF2E2C1CFDD000003163 /* Extensions */,
+				D4D1EF3A2C1D8C7300003163 /* SceneInput */,
+				D4D1EF552C1D9B9500003163 /* SpriteWorld */,
+				D4D1EF3D2C1D8E0A00003163 /* AppState.swift */,
 				D4D1EF1C2C1CFA3200003163 /* ContentView.swift */,
+				D4D1EF1A2C1CFA3200003163 /* LiraApp.swift */,
+				D4D1EF4C2C1D90AB00003163 /* SceneInfo.swift */,
+				D4D1EF452C1D8ECE00003163 /* SelectionController.swift */,
+				D4D1EF3B2C1D8D7E00003163 /* SpriteWorldView.swift */,
 				D4D1EF1E2C1CFA3400003163 /* Assets.xcassets */,
 				D4D1EF232C1CFA3400003163 /* Lira.entitlements */,
 				D4D1EF202C1CFA3400003163 /* Preview Content */,
@@ -67,6 +120,59 @@
 				D4D1EF212C1CFA3400003163 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D4D1EF2E2C1CFDD000003163 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D4D1EF2B2C1CFDD000003163 /* CoreGraphics+Extensions.swift */,
+				D4D1EF2C2C1CFDD000003163 /* SKNode+Extensions.swift */,
+				D4D1EF2D2C1CFDD000003163 /* String+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D4D1EF3A2C1D8C7300003163 /* SceneInput */ = {
+			isa = PBXGroup;
+			children = (
+				D4D1EF322C1CFDEA00003163 /* DragInfo.swift */,
+				D4D1EF292C1CFCDE00003163 /* DragManager.swift */,
+				D4D1EF382C1D8C5A00003163 /* SceneInputManager.swift */,
+				D4D1EF362C1D1C4E00003163 /* TapInfo.swift */,
+				D4D1EF342C1D1BEE00003163 /* TapManager.swift */,
+			);
+			path = SceneInput;
+			sourceTree = "<group>";
+		};
+		D4D1EF472C1D8F1000003163 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				D4D1EF432C1D8EC500003163 /* Entity.swift */,
+				D4D1EF512C1D985F00003163 /* Gremlin.swift */,
+				D4D1EF482C1D8F2100003163 /* MoveHandle.swift */,
+				D4D1EF4A2C1D8F2800003163 /* RosizeHandle.swift */,
+				D4D1EF532C1D98AE00003163 /* Waypoint.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		D4D1EF4E2C1D951D00003163 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				D4D1EF4F2C1D953100003163 /* Component.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		D4D1EF552C1D9B9500003163 /* SpriteWorld */ = {
+			isa = PBXGroup;
+			children = (
+				D4D1EF582C1D9BCB00003163 /* SpriteWorld.swift */,
+				D4D1EF3F2C1D8E4600003163 /* Game.swift */,
+				D4D1EF412C1D8E9E00003163 /* Scene.swift */,
+				D4D1EF562C1D9BAA00003163 /* SelectionMarquee.swift */,
+			);
+			path = SpriteWorld;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,7 +245,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4D1EF3C2C1D8D7E00003163 /* SpriteWorldView.swift in Sources */,
+				D4D1EF332C1CFDEA00003163 /* DragInfo.swift in Sources */,
+				D4D1EF542C1D98AE00003163 /* Waypoint.swift in Sources */,
+				D4D1EF402C1D8E4600003163 /* Game.swift in Sources */,
 				D4D1EF1D2C1CFA3200003163 /* ContentView.swift in Sources */,
+				D4D1EF422C1D8E9E00003163 /* Scene.swift in Sources */,
+				D4D1EF3E2C1D8E0A00003163 /* AppState.swift in Sources */,
+				D4D1EF522C1D985F00003163 /* Gremlin.swift in Sources */,
+				D4D1EF2F2C1CFDD000003163 /* CoreGraphics+Extensions.swift in Sources */,
+				D4D1EF352C1D1BEE00003163 /* TapManager.swift in Sources */,
+				D4D1EF302C1CFDD000003163 /* SKNode+Extensions.swift in Sources */,
+				D4D1EF592C1D9BCB00003163 /* SpriteWorld.swift in Sources */,
+				D4D1EF502C1D953100003163 /* Component.swift in Sources */,
+				D4D1EF2A2C1CFCDE00003163 /* DragManager.swift in Sources */,
+				D4D1EF312C1CFDD000003163 /* String+Extensions.swift in Sources */,
+				D4D1EF442C1D8EC500003163 /* Entity.swift in Sources */,
+				D4D1EF572C1D9BAA00003163 /* SelectionMarquee.swift in Sources */,
+				D4D1EF392C1D8C5A00003163 /* SceneInputManager.swift in Sources */,
+				D4D1EF4D2C1D90AB00003163 /* SceneInfo.swift in Sources */,
+				D4D1EF372C1D1C4E00003163 /* TapInfo.swift in Sources */,
+				D4D1EF492C1D8F2100003163 /* MoveHandle.swift in Sources */,
+				D4D1EF4B2C1D8F2800003163 /* RosizeHandle.swift in Sources */,
+				D4D1EF462C1D8ECE00003163 /* SelectionController.swift in Sources */,
 				D4D1EF1B2C1CFA3200003163 /* LiraApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
