@@ -7,9 +7,18 @@ enum Entities {
     enum Feature { }
 }
 
-class Entity {
+class Entity: NSObject {
     let isHandle = false
     let isSelectable = false
+    let uuid = UUID()
+}
+
+class SelectableEntity: Entity, Entities.Feature.IsSelectable {
+    var isSelected: Bool { false }
+
+    func deselect() { }
+    func select() { }
+    func toggleSelect() { }
 }
 
 extension Entities.Feature {
@@ -26,6 +35,10 @@ extension Entities.Feature {
         var moveHandle: Entities.MoveHandle { get }
     }
 
+    protocol HasPosition {
+        var position: CGPoint { get set }
+    }
+
     protocol HasRosizeHandles {
         var rosizeHandles: [Entities.RosizeHandle] { get }
     }
@@ -34,6 +47,14 @@ extension Entities.Feature {
         func dragBegin(_ startVertex: CGPoint, _ endVertex: CGPoint, _ control: Bool, _ shift: Bool)
         func dragContinue(_ startVertex: CGPoint, _ endVertex: CGPoint, _ control: Bool, _ shift: Bool)
         func dragEnd(_ startVertex: CGPoint, _ endVertex: CGPoint, _ control: Bool, _ shift: Bool)
+    }
+
+    protocol IsSelectable {
+        var isSelected: Bool { get }
+
+        func deselect()
+        func select()
+        func toggleSelect()
     }
 
 }

@@ -8,7 +8,7 @@ extension Entities {
     
     final class RosizeHandle:
         Entity,
-        Components.Feature.HasAvatarShape
+        Entities.Feature.HasAvatarShape
     {
 
         var shape: SKShapeNode {

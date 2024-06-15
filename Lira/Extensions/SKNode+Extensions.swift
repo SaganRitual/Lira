@@ -13,4 +13,8 @@ extension SKNode {
         if userData == nil { userData = [:] }
         userData!["ownerEntity"] = entity
     }
+
+    func hide() { isHidden = true }
+    func show() { isHidden = false }
+    func toggleVisible() { isHidden = !isHidden }
 }

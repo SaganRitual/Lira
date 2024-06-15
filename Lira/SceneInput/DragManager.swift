@@ -37,7 +37,7 @@ final class DragManager {
 
         switch currentState {
         case .dragBackground:
-            selectionMarquee.dispatch(dragInfo)
+            selectionMarquee.dispatchDrag(dragInfo)
         case .dragHandle:
             dragHandlePublisher.send(dragInfo)
         default:
@@ -50,8 +50,8 @@ final class DragManager {
 
         switch currentState {
         case .dragBackground:
-            selectionController.dispatch(dragInfo)
-            selectionMarquee.dispatch(dragInfo)
+            selectionController.dispatchDrag(dragInfo)
+            selectionMarquee.dispatchDrag(dragInfo)
         case .dragHandle:
             dragHandlePublisher.send(dragInfo)
         default:
@@ -74,11 +74,12 @@ private extension DragManager {
         let sv = scene.convertPoint(fromView: startVertex)
 
         guard let topNode = scene.getTopNode(at: sv) else {
+            selectionController.dispatchDrag(DragInfo.begin(nil, startVertex, endVertex, control, shift))
             currentState = .dragBackground
             return
         }
 
-        guard var entity = topNode.getOwnerEntity() else {
+        guard let entity = topNode.getOwnerEntity() else {
             assert(false, "Every visible node should be owned by an entity")
             return
         }
@@ -86,12 +87,11 @@ private extension DragManager {
         let dragInfo = DragInfo.begin(entity, startVertex, endVertex, control, shift)
 
         if let hasMoveHandle = entity as? Entities.Feature.HasMoveHandle {
-
             // We don't actually drag game entities, we drag their drag-handles, and each drag-handle
             // moves its own entity. The user can begin a drag on a deselected entity, which necessarily
             // changes what is and isn't selected, so we have to tell the selection controller whenever
             // a begin drag happens
-            selectionController.dispatch(dragInfo)
+            selectionController.dispatchDrag(dragInfo)
 
             // After we've told the selection controller, the entity under the mouse is definitely
             // selected (therefore showing a handle), so we set up to drag the handle
@@ -106,6 +106,7 @@ private extension DragManager {
             assert(false, "Reputable scientists have said this cannot occur")
         }
 
+        dragHandlePublisher.send(dragInfo)
         currentState = .dragHandle
     }
 

@@ -4,9 +4,9 @@ import SpriteKit
 import SwiftUI
 
 struct SpriteWorldView: View {
-    @ObservedObject var sceneInfo: SceneInfo
+    @EnvironmentObject var sceneInfo: SceneInfo
 
-    @State private var game: Game
+    @State private var appState: AppState
 
     // With eternal gratitude to
     // https://forums.developer.apple.com/forums/profile/billh04
@@ -14,15 +14,14 @@ struct SpriteWorldView: View {
     // https://forums.developer.apple.com/forums/thread/724082
     let glassPaneColor = CGColor(red: 0, green: 0, blue: 0, alpha: 0.01)
 
-    init(sceneInfo: SceneInfo, game: Game) {
-        self.sceneInfo = sceneInfo
-        self.game = game
+    init(appState: AppState) {
+        self.appState = appState
     }
 
     var body: some View {
         ZStack {
             SpriteView(
-                scene: game.scene,
+                scene: appState.scene,
                 debugOptions: [.showsFields, .showsFPS, .showsNodeCount, .showsPhysics]
             )
 
@@ -44,11 +43,11 @@ struct SpriteWorldView: View {
             DragGesture().modifiers(.shift)
                 .onChanged { value in
                     sceneInfo.hoverLocation = value.location
-                    game.sceneInputManager.drag(value.startLocation, value.location, false, true)
+                    appState.sceneInputManager.drag(value.startLocation, value.location, false, true)
                 }
                 .onEnded { value in
                     sceneInfo.hoverLocation = value.location
-                    game.sceneInputManager.dragEnd(value.startLocation, value.location, false, true)
+                    appState.sceneInputManager.dragEnd(value.startLocation, value.location, false, true)
                 }
         )
 
@@ -56,29 +55,29 @@ struct SpriteWorldView: View {
             DragGesture()
                 .onChanged { value in
                     sceneInfo.hoverLocation = value.location
-                    game.sceneInputManager.drag(value.startLocation, value.location, false, false)
+                    appState.sceneInputManager.drag(value.startLocation, value.location, false, false)
                 }
                 .onEnded { value in
                     sceneInfo.hoverLocation = value.location
-                    game.sceneInputManager.dragEnd(value.startLocation, value.location, false, false)
+                    appState.sceneInputManager.dragEnd(value.startLocation, value.location, false, false)
                 }
         )
 
         .gesture(
             TapGesture().modifiers(.control).onEnded {
-                game.sceneInputManager.tap(at: sceneInfo.hoverLocation!, true, false)
+                appState.sceneInputManager.tap(at: sceneInfo.hoverLocation!, true, false)
             }
         )
 
         .gesture(
             TapGesture().modifiers(.shift).onEnded {
-                game.sceneInputManager.tap(at: sceneInfo.hoverLocation!, false, true)
+                appState.sceneInputManager.tap(at: sceneInfo.hoverLocation!, false, true)
             }
         )
 
         .gesture(
             TapGesture().onEnded {
-                game.sceneInputManager.tap(at: sceneInfo.hoverLocation!, false, false)
+                appState.sceneInputManager.tap(at: sceneInfo.hoverLocation!, false, false)
             }
         )
 

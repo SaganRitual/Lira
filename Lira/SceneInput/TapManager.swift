@@ -35,19 +35,19 @@ final class TapManager {
     func tap(at position: CGPoint, _ control: Bool, _ shift: Bool) {
         let sp = scene.convertPoint(fromView: position)
 
-        guard let tappedNode = game.scene.getTopNode(at: sp) else {
+        guard let tappedNode = scene.getTopNode(at: sp) else {
             // Tap on the background
             let tapInfo = TapInfo.tap(nil, position, control, shift)
 
             // Always update the selection state first on any user input
-            selectionController.dispatch(tapInfo)
+            selectionController.dispatchTap(tapInfo)
 
             // Tell the game about tap on background, which currently
             // means only one thing: create new entities
-            let newEntity = game.newEntity(tapInfo)
+            let newEntity = game.newEntity(tapInfo) as! Entity & Entities.Feature.IsSelectable
 
             // At least for now, we always select the newly created entity
-            selectionController.select(newEntity)
+            selectionController.newSelectableCreated(newEntity)
             return
         }
 
@@ -56,7 +56,7 @@ final class TapManager {
             return
         }
 
-        selectionController.dispatch(TapInfo.tap(entity, position, control, shift))
+        selectionController.dispatchTap(TapInfo.tap(entity, position, control, shift))
     }
 
 }

@@ -20,8 +20,8 @@ extension SpriteWorld {
 
         var borderSprites = [SpriteWorld.Directions: SKSpriteNode]()
 
-        init(_ game: SpriteWorld.Game) {
-            self.scene = game.scene
+        init(_ scene: SpriteWorld.Scene) {
+            self.scene = scene
 
             Directions.allCases.forEach { direction in
                 let sprite = SKSpriteNode(imageNamed: "pixel_1x1")
@@ -46,7 +46,7 @@ extension SpriteWorld {
             scene.rootNode.addChild(selectionExtentRoot)
         }
 
-        func dispatch(_ dragInfo: DragInfo) {
+        func dispatchDrag(_ dragInfo: DragInfo) {
             let sv = scene.convertPoint(fromView: dragInfo.startVertex)
             let ev = scene.convertPoint(fromView: dragInfo.endVertex)
 

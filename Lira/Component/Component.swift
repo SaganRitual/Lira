@@ -3,5 +3,8 @@
 import Foundation
 
 enum Components {
+    enum Feature { }
+}
 
+extension Components.Feature {
 }

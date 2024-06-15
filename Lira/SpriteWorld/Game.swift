@@ -4,15 +4,25 @@ import Foundation
 import SpriteKit
 
 extension SpriteWorld {
-    
+
     final class Game {
-        let scene = Scene()
-        let sceneInputManager: SceneInputManager
-        let selectionController = SelectionController()
-        
-        func newEntity(_ tapInfo: TapInfo) -> Entity { fatalError() }
-        
+        let dragManager: DragManager
+        let scene: Scene
+
+        init(_ dragManager: DragManager, _ scene: Scene) {
+            self.dragManager = dragManager
+            self.scene = scene
+        }
+
         func getOwnerEntity(for node: SKNode) -> Entity? { nil }
+
+        func newEntity(_ tapInfo: TapInfo) -> Entity {
+            let sp = scene.convertPoint(fromView: tapInfo.position)
+
+            let gremlin = Entities.Gremlin.makeGremlin(at: sp, parentSceneNode: scene.rootNode, dragManager: dragManager)
+            return gremlin
+        }
+
     }
-    
+
 }

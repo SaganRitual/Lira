@@ -29,7 +29,7 @@ extension SpriteWorld {
             let origin = CGPoint(x: -size.width / 2, y: -size.height / 2)
             let pb = SKPhysicsBody(edgeLoopFrom: CGRect(origin: origin, size: size))
 
-            let m = SWPhysics.CollisionMask.gremlin + SWPhysics.CollisionMask.foobar
+            let m = Physics.CollisionMask.gremlin + Physics.CollisionMask.foobar
             pb.collisionBitMask = m
             pb.categoryBitMask = m
             pb.restitution = 1

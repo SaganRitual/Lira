@@ -3,13 +3,17 @@
 import Foundation
 import SpriteKit
 
-final class Waypoint:
-    Entity,
-    Components.Feature.HasAvatarSprite,
-    Components.Feature.HasMoveHandle
-{
+extension Entities {
 
-    var moveHandle: Entities.MoveHandle { .init() }
-    var sprite: SKSpriteNode { .init() }
+    final class Waypoint:
+        Entity,
+        Feature.HasAvatarSprite,
+        Feature.HasMoveHandle
+    {
+
+        var moveHandle: MoveHandle { fatalError() }
+        var sprite: SKSpriteNode { fatalError() }
+
+    }
 
 }

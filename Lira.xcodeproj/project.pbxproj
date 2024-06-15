@@ -33,6 +33,8 @@
 		D4D1EF542C1D98AE00003163 /* Waypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF532C1D98AE00003163 /* Waypoint.swift */; };
 		D4D1EF572C1D9BAA00003163 /* SelectionMarquee.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF562C1D9BAA00003163 /* SelectionMarquee.swift */; };
 		D4D1EF592C1D9BCB00003163 /* SpriteWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF582C1D9BCB00003163 /* SpriteWorld.swift */; };
+		D4D1EF5B2C1DD44800003163 /* AvatarSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF5A2C1DD44800003163 /* AvatarSprite.swift */; };
+		D4D1EF5D2C1E2E9800003163 /* Physics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF5C2C1E2E9800003163 /* Physics.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +66,8 @@
 		D4D1EF532C1D98AE00003163 /* Waypoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waypoint.swift; sourceTree = "<group>"; };
 		D4D1EF562C1D9BAA00003163 /* SelectionMarquee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionMarquee.swift; sourceTree = "<group>"; };
 		D4D1EF582C1D9BCB00003163 /* SpriteWorld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteWorld.swift; sourceTree = "<group>"; };
+		D4D1EF5A2C1DD44800003163 /* AvatarSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarSprite.swift; sourceTree = "<group>"; };
+		D4D1EF5C2C1E2E9800003163 /* Physics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Physics.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				D4D1EF4F2C1D953100003163 /* Component.swift */,
+				D4D1EF5A2C1DD44800003163 /* AvatarSprite.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -169,6 +174,7 @@
 			children = (
 				D4D1EF582C1D9BCB00003163 /* SpriteWorld.swift */,
 				D4D1EF3F2C1D8E4600003163 /* Game.swift */,
+				D4D1EF5C2C1E2E9800003163 /* Physics.swift */,
 				D4D1EF412C1D8E9E00003163 /* Scene.swift */,
 				D4D1EF562C1D9BAA00003163 /* SelectionMarquee.swift */,
 			);
@@ -245,6 +251,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4D1EF5B2C1DD44800003163 /* AvatarSprite.swift in Sources */,
 				D4D1EF3C2C1D8D7E00003163 /* SpriteWorldView.swift in Sources */,
 				D4D1EF332C1CFDEA00003163 /* DragInfo.swift in Sources */,
 				D4D1EF542C1D98AE00003163 /* Waypoint.swift in Sources */,
@@ -269,6 +276,7 @@
 				D4D1EF4B2C1D8F2800003163 /* RosizeHandle.swift in Sources */,
 				D4D1EF462C1D8ECE00003163 /* SelectionController.swift in Sources */,
 				D4D1EF1B2C1CFA3200003163 /* LiraApp.swift in Sources */,
+				D4D1EF5D2C1E2E9800003163 /* Physics.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
