@@ -17,4 +17,6 @@ extension SKNode {
     func hide() { isHidden = true }
     func show() { isHidden = false }
     func toggleVisible() { isHidden = !isHidden }
+
+    var swScene: SpriteWorld.Scene { scene! as! SpriteWorld.Scene }
 }

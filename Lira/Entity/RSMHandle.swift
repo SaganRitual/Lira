@@ -60,8 +60,7 @@ extension Entities {
                 return
             }
 
-            let scene = shape.scene! as! SpriteWorld.Scene
-            let ev = scene.convertPoint(fromView: dragInfo.endVertex)
+            let ev = shape.swScene.convertPoint(fromView: dragInfo.endVertex)
 
             let delta = ev - self.position
             let distance = delta.magnitude

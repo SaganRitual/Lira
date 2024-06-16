@@ -66,10 +66,8 @@ extension Entities {
         func dispatchDrag(_ dragInfo: DragInfo) {
             guard isActive else { return }
 
-            let scene = shape.scene! as! SpriteWorld.Scene
-
-            let sv = scene.convertPoint(fromView: dragInfo.startVertex)
-            let ev = scene.convertPoint(fromView: dragInfo.endVertex)
+            let sv = shape.swScene.convertPoint(fromView: dragInfo.startVertex)
+            let ev = shape.swScene.convertPoint(fromView: dragInfo.endVertex)
 
             switch dragInfo.phase {
             case .begin:
