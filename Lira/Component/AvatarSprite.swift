@@ -27,8 +27,10 @@ extension Components {
     }
 
     final class MoveHandleShape: AvatarShape {
-        static func makeShape() -> SKShapeNode {
-            let shape = SKShapeNode(circleOfRadius: 15)
+        static let radius = 25.0
+
+        static func makeShape() -> AvatarShape {
+            let shape = AvatarShape(circleOfRadius: radius)
 
             shape.lineWidth = 1
             shape.strokeColor = .green
@@ -43,5 +45,26 @@ extension Components {
         required init?(coder aDecoder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
+    }
+
+    final class RosizeHandleShape: AvatarShape {
+        static let radius = 5.0
+
+        static func makeShape() -> AvatarShape {
+            let shape = AvatarShape(circleOfRadius: radius)
+            
+            shape.isAntialiased = true
+            shape.strokeColor = .clear
+            shape.blendMode = .replace
+            shape.isHidden = false
+            shape.zPosition = 11
+
+            return shape
+        }
+
+        required init?(coder aDecoder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+
     }
 }

@@ -6,12 +6,14 @@ import SpriteKit
 
 extension Entities {
     
-    final class MoveHandle:
+    class MoveHandle:
         Entity,
-        Entities.Feature.HasAvatarShape
+        Entities.Feature.HasAvatarShape,
+        Entities.Feature.Positionable
     {
+        override var isHandle: Bool { true }
 
-        let shape: SKShapeNode
+        let shape: Components.AvatarShape
 
         var isActive: Bool { !shape.isHidden }
 
@@ -27,7 +29,7 @@ extension Entities {
             set {
                 shape.position = newValue
 
-                if var hasPosition = targetEntity as? Entities.Feature.HasPosition {
+                if var hasPosition = targetEntity as? Entities.Feature.Positionable {
                     hasPosition.position = newValue
                 }
             }
@@ -60,43 +62,41 @@ extension Entities {
         func toggleActivation() {
             shape.toggleVisible()
         }
+        
+        func dispatchDrag(_ dragInfo: DragInfo) {
+            guard isActive else { return }
 
-    }
-    
-}
+            let scene = shape.scene! as! SpriteWorld.Scene
 
-private extension Entities.MoveHandle {
-
-    func dispatchDrag(_ dragInfo: DragInfo) {
-        guard isActive else { return }
-
-        let scene = shape.scene! as! SpriteWorld.Scene
-
-        switch dragInfo.phase {
-        case .begin:
             let sv = scene.convertPoint(fromView: dragInfo.startVertex)
             let ev = scene.convertPoint(fromView: dragInfo.endVertex)
-            dragBegin(sv, ev, dragInfo.control, dragInfo.shift)
 
-        case .continue:
-            let sv = scene.convertPoint(fromView: dragInfo.startVertex)
-            let ev = scene.convertPoint(fromView: dragInfo.endVertex)
-            dragContinue(sv, ev, dragInfo.control, dragInfo.shift)
+            switch dragInfo.phase {
+            case .begin:
+                dragBegin(sv, ev, dragInfo.control, dragInfo.shift)
 
-        case .end:
-            break
+            case .continue:
+                dragContinue(sv, ev, dragInfo.control, dragInfo.shift)
+
+            case .end:
+                dragEnd(sv, ev, dragInfo.control, dragInfo.shift)
+                break
+            }
+
         }
 
-    }
+        func dragBegin(_ startVertex: CGPoint, _ endVertex: CGPoint, _ control: Bool, _ shift: Bool) {
+            dragAnchor = self.position
+        }
 
-    func dragBegin(_ startVertex: CGPoint, _ endVertex: CGPoint, _ control: Bool, _ shift: Bool) {
-        dragAnchor = self.position
-    }
+        func dragContinue(_ startVertex: CGPoint, _ endVertex: CGPoint, _ control: Bool, _ shift: Bool) {
+            let delta = endVertex - startVertex
+            let newPosition = dragAnchor + delta
 
-    func dragContinue(_ startVertex: CGPoint, _ endVertex: CGPoint, _ control: Bool, _ shift: Bool) {
-        let delta = endVertex - startVertex
-        let newPosition = dragAnchor + delta
+            self.position = newPosition
+        }
 
-        self.position = newPosition
+        func dragEnd(_ startVertex: CGPoint, _ endVertex: CGPoint, _ control: Bool, _ shift: Bool) {
+        }
     }
 }

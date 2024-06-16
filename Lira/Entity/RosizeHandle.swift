@@ -8,26 +8,54 @@ extension Entities {
     
     final class RosizeHandle:
         Entity,
-        Entities.Feature.HasAvatarShape
+        Entities.Feature.HasAvatarShape,
+        Entities.Feature.Scalable
     {
+        override var isHandle: Bool { true }
 
-        var shape: SKShapeNode {
-            SKShapeNode()
+        var scale: CGFloat {
+            get { sqrt(2 * shape.xScale * shape.xScale) }
+
+            set {
+                shape.setScale(newValue)
+            }
         }
 
-        private var subscriptions = Set<AnyCancellable>()
+        let direction: SpriteWorld.Directions
+        let shape: Components.AvatarShape
 
-        init(_ dragManager: DragManager) {
+        init(_ direction: SpriteWorld.Directions, _ parentRadius: CGFloat) {
+            self.direction = direction
+            self.shape = Components.RosizeHandleShape.makeShape()
+
             super.init()
 
-            dragManager.dragHandlePublisher
-                .sink { [weak self] in self?.dispatchDrag($0) }
-                .store(in: &subscriptions)
+            self.shape.setOwnerEntity(self)
+
+            deploy(direction, parentRadius)
         }
 
-        func dispatchDrag(_ dragInfo: DragInfo) {
-
-        }
     }
     
+}
+
+private extension Entities.RosizeHandle {
+
+    func deploy(_ direction: SpriteWorld.Directions, _ parentRadius: CGFloat) {
+        switch direction {
+        case .n:
+            shape.fillColor = .red
+            shape.position = CGPoint(x: 0, y: parentRadius)
+        case .e:
+            shape.fillColor = .green
+            shape.position = CGPoint(x: parentRadius, y: 0)
+        case .s:
+            shape.fillColor = .blue
+            shape.position = CGPoint(x: 0, y: -parentRadius)
+        case .w:
+            shape.fillColor = .yellow
+            shape.position = CGPoint(x: -parentRadius, y: 0)
+        }
+    }
+
 }

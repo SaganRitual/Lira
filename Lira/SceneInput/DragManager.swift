@@ -16,7 +16,7 @@ final class DragManager {
     }
 
     var currentState = State.idle
-    var hotDragHandle: Entities.MoveHandle?
+    var hotDragHandle: Entity?
 
     init(
         _ scene: SpriteWorld.Scene,
@@ -97,10 +97,10 @@ private extension DragManager {
             // selected (therefore showing a handle), so we set up to drag the handle
             hotDragHandle = hasMoveHandle.moveHandle
 
-        } else if let isMoveHandle = entity as? Entities.MoveHandle {
+        } else if entity.isHandle {
 
             // Dragging a move handle requires less setup
-            hotDragHandle = isMoveHandle
+            hotDragHandle = entity
 
         } else {
             assert(false, "Reputable scientists have said this cannot occur")

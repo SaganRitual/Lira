@@ -8,8 +8,7 @@ enum Entities {
 }
 
 class Entity: NSObject {
-    let isHandle = false
-    let isSelectable = false
+    var isHandle: Bool { false }
     let uuid = UUID()
 }
 
@@ -24,19 +23,19 @@ class SelectableEntity: Entity, Entities.Feature.IsSelectable {
 extension Entities.Feature {
 
     protocol HasAvatarShape {
-        var shape: SKShapeNode { get }
+        var shape: Components.AvatarShape { get }
     }
 
     protocol HasAvatarSprite {
-        var sprite: SKSpriteNode { get }
+        var sprite: Components.AvatarSprite { get }
     }
 
     protocol HasMoveHandle {
         var moveHandle: Entities.MoveHandle { get }
     }
 
-    protocol HasPosition {
-        var position: CGPoint { get set }
+    protocol HasRSMHandle {
+        var rsmHandle: Entities.RSMHandle { get }
     }
 
     protocol HasRosizeHandles {
@@ -55,6 +54,18 @@ extension Entities.Feature {
         func deselect()
         func select()
         func toggleSelect()
+    }
+
+    protocol Positionable {
+        var position: CGPoint { get set }
+    }
+
+    protocol Rotatable {
+        var rotation: CGFloat { get set }
+    }
+
+    protocol Scalable {
+        var scale: CGFloat { get set }
     }
 
 }

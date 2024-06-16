@@ -10,9 +10,8 @@ extension Entities {
         Feature.HasAvatarSprite,
         Feature.HasMoveHandle
     {
-
         var moveHandle: MoveHandle { fatalError() }
-        var sprite: SKSpriteNode { fatalError() }
+        var sprite: Components.AvatarSprite { fatalError() }
 
     }
 

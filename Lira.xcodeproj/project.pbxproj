@@ -35,6 +35,7 @@
 		D4D1EF592C1D9BCB00003163 /* SpriteWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF582C1D9BCB00003163 /* SpriteWorld.swift */; };
 		D4D1EF5B2C1DD44800003163 /* AvatarSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF5A2C1DD44800003163 /* AvatarSprite.swift */; };
 		D4D1EF5D2C1E2E9800003163 /* Physics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF5C2C1E2E9800003163 /* Physics.swift */; };
+		D4D1EF5F2C1E7EE000003163 /* RSMHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1EF5E2C1E7EE000003163 /* RSMHandle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		D4D1EF582C1D9BCB00003163 /* SpriteWorld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteWorld.swift; sourceTree = "<group>"; };
 		D4D1EF5A2C1DD44800003163 /* AvatarSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarSprite.swift; sourceTree = "<group>"; };
 		D4D1EF5C2C1E2E9800003163 /* Physics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Physics.swift; sourceTree = "<group>"; };
+		D4D1EF5E2C1E7EE000003163 /* RSMHandle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSMHandle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 				D4D1EF512C1D985F00003163 /* Gremlin.swift */,
 				D4D1EF482C1D8F2100003163 /* MoveHandle.swift */,
 				D4D1EF4A2C1D8F2800003163 /* RosizeHandle.swift */,
+				D4D1EF5E2C1E7EE000003163 /* RSMHandle.swift */,
 				D4D1EF532C1D98AE00003163 /* Waypoint.swift */,
 			);
 			path = Entity;
@@ -268,6 +271,7 @@
 				D4D1EF2A2C1CFCDE00003163 /* DragManager.swift in Sources */,
 				D4D1EF312C1CFDD000003163 /* String+Extensions.swift in Sources */,
 				D4D1EF442C1D8EC500003163 /* Entity.swift in Sources */,
+				D4D1EF5F2C1E7EE000003163 /* RSMHandle.swift in Sources */,
 				D4D1EF572C1D9BAA00003163 /* SelectionMarquee.swift in Sources */,
 				D4D1EF392C1D8C5A00003163 /* SceneInputManager.swift in Sources */,
 				D4D1EF4D2C1D90AB00003163 /* SceneInfo.swift in Sources */,
