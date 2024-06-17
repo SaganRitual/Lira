@@ -22,7 +22,11 @@ final class SceneInputManager: ObservableObject {
         dragManager.dragEnd(startVertex: startVertex, endVertex: endVertex, control, shift)
     }
 
-    func tap(at position: CGPoint, _ control: Bool, _ shift: Bool) {
+    func rightClick(_ position: CGPoint, _ control: Bool, _ shift: Bool) {
+        print("right click at \(position)")
+    }
+
+    func tap(_ position: CGPoint, _ control: Bool, _ shift: Bool) {
         tapManager.tap(at: position, control, shift)
     }
 }

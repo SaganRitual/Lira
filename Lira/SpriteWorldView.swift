@@ -37,6 +37,12 @@ struct SpriteWorldView: View {
                         }
                     }
                 }
+
+            RightClickableView(onRightClick: {
+                appState.sceneInputManager.rightClick(sceneInfo.hoverLocation!, false, false) // Example action
+            })
+            .frame(width: sceneInfo.viewSize.width, height: sceneInfo.viewSize.height)
+            .contentShape(Rectangle()) // Ensure the entire area is clickable
         }
 
         .gesture(
@@ -65,19 +71,19 @@ struct SpriteWorldView: View {
 
         .gesture(
             TapGesture().modifiers(.control).onEnded {
-                appState.sceneInputManager.tap(at: sceneInfo.hoverLocation!, true, false)
+                appState.sceneInputManager.tap(sceneInfo.hoverLocation!, true, false)
             }
         )
 
         .gesture(
             TapGesture().modifiers(.shift).onEnded {
-                appState.sceneInputManager.tap(at: sceneInfo.hoverLocation!, false, true)
+                appState.sceneInputManager.tap(sceneInfo.hoverLocation!, false, true)
             }
         )
 
         .gesture(
             TapGesture().onEnded {
-                appState.sceneInputManager.tap(at: sceneInfo.hoverLocation!, false, false)
+                appState.sceneInputManager.tap(sceneInfo.hoverLocation!, false, false)
             }
         )
 
