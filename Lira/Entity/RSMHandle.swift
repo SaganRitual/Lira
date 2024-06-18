@@ -55,19 +55,33 @@ extension Entities {
         }
 
         override func dispatchDrag(_ dragInfo: DragInfo) {
-            guard let rh = rosizeHandles.first(where: { (_, handle) in handle === dragInfo.entity }) else {
+            if !(dragInfo.entity is RosizeHandle) {
+                // If it's not a rosize handle, it's a move handle, which is our base class
                 super.dispatchDrag(dragInfo)
                 return
             }
 
-            let ev = dragInfo.endVertexInScene
+            // It is a rosize handle
 
-            let delta = ev - self.position
+            let rosizeHandle = dragInfo.entity! as! RosizeHandle
+            let ownerRSM = rosizeHandle.shape.parent!.getOwnerEntity()! as! RSMHandle
+
+            guard self === ownerRSM || self.isActive else {
+                // If not selected, ignore dragging
+                return
+            }
+
+            // What we want to do here is rosize all selected entities in proportion to
+            // the movement of the mouse relative to the specific handle we're dragging.
+            // But it's a low-priority feature. I'm eager to get the other part of the
+            // app working. Come back to this
+            let ev = dragInfo.endVertexInScene
+            let delta = ev - ownerRSM.position
             let distance = delta.magnitude
             let scale = distance / Components.MoveHandleShape.radius
             var rotation = atan2(delta.y, delta.x)
 
-            switch rh.value.direction {
+            switch rosizeHandle.direction {
             case .n: rotation -= .pi / 2
             case .e: rotation += 0
             case .s: rotation += .pi / 2
@@ -76,7 +90,7 @@ extension Entities {
 
             switch dragInfo.phase {
             case .begin:
-                draggingSubhandle = rh.value
+                draggingSubhandle = rosizeHandle
             case .continue:
                 self.rotation = rotation
                 self.scale = scale
