@@ -68,8 +68,8 @@ extension SelectionController {
             }
 
             // The rectangle described by the selection marquee drives the new selection state
-            let sv = scene.convertPoint(fromView: dragInfo.startVertex)
-            let ev = scene.convertPoint(fromView: dragInfo.endVertex)
+            let sv = dragInfo.startVertexInScene
+            let ev = dragInfo.endVertexInScene
             let rect = makeRectangle(vertexA: sv, vertexB: ev)
 
             guard let selectables = getSelectable(in: rect) else {

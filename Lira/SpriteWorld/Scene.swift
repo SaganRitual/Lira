@@ -58,11 +58,6 @@ extension SpriteWorld {
 
 extension SpriteWorld.Scene {
 
-    override func convertPoint(fromView position: CGPoint) -> CGPoint {
-        let c = super.convertPoint(fromView: position)
-        return CGPoint(x: c.x, y: -c.y)
-    }
-
     func getTopNode(at positionInScene: CGPoint) -> SKNode? {
         rootNode.nodes(at: positionInScene).first
     }

@@ -14,19 +14,19 @@ final class SceneInputManager: ObservableObject {
         self.tapManager = tapManager
     }
 
-    func drag(_ startVertex: CGPoint, _ endVertex: CGPoint, _ control: Bool, _ shift: Bool) {
-        dragManager.drag(startVertex: startVertex, endVertex: endVertex, control, shift)
+    func drag(_ mouseContact: MouseContact) {
+        dragManager.drag(mouseContact)
     }
 
-    func dragEnd(_ startVertex: CGPoint, _ endVertex: CGPoint, _ control: Bool, _ shift: Bool) {
-        dragManager.dragEnd(startVertex: startVertex, endVertex: endVertex, control, shift)
+    func dragEnd(_ mouseContact: MouseContact) {
+        dragManager.dragEnd(mouseContact)
     }
 
-    func rightClick(_ position: CGPoint, _ control: Bool, _ shift: Bool) {
-        print("right click at \(position)")
+    func rightClick(_ mouseContact: MouseContact) {
+        print("right click at \(mouseContact.sceneStart)")
     }
 
-    func tap(_ position: CGPoint, _ control: Bool, _ shift: Bool) {
-        tapManager.tap(at: position, control, shift)
+    func tap(_ mouseContact: MouseContact) {
+        tapManager.tap(mouseContact)
     }
 }

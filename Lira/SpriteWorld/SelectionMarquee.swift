@@ -47,8 +47,8 @@ extension SpriteWorld {
         }
 
         func dispatchDrag(_ dragInfo: DragInfo) {
-            let sv = scene.convertPoint(fromView: dragInfo.startVertex)
-            let ev = scene.convertPoint(fromView: dragInfo.endVertex)
+            let sv = dragInfo.startVertexInScene
+            let ev = dragInfo.endVertexInScene
 
             switch dragInfo.phase {
             case .end:

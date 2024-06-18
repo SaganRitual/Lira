@@ -17,7 +17,7 @@ extension SpriteWorld {
         func getOwnerEntity(for node: SKNode) -> Entity? { nil }
 
         func newEntity(_ tapInfo: TapInfo) -> Entity {
-            let sp = scene.convertPoint(fromView: tapInfo.position)
+            let sp = tapInfo.positionInScene
 
             let gremlin = Entities.Gremlin.makeGremlin(at: sp, parentSceneNode: scene.rootNode, dragManager: dragManager)
             return gremlin

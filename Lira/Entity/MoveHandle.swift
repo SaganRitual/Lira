@@ -66,8 +66,8 @@ extension Entities {
         func dispatchDrag(_ dragInfo: DragInfo) {
             guard isActive else { return }
 
-            let sv = shape.swScene.convertPoint(fromView: dragInfo.startVertex)
-            let ev = shape.swScene.convertPoint(fromView: dragInfo.endVertex)
+            let sv = dragInfo.startVertexInScene
+            let ev = dragInfo.endVertexInScene
 
             switch dragInfo.phase {
             case .begin:

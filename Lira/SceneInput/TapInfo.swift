@@ -5,17 +5,17 @@ import Foundation
 struct TapInfo {
     let control: Bool
     let entity: Entity?
-    let position: CGPoint
+    let positionInScene: CGPoint
     let shift: Bool
 
-    static func tap(_ entity: Entity?, _ position: CGPoint, _ control: Bool, _ shift: Bool) -> TapInfo {
-        TapInfo(entity, position, control, shift)
+    static func tap(_ entity: Entity?, _ mouseContact: SceneInputManager.MouseContact) -> TapInfo {
+        TapInfo(entity, mouseContact)
     }
 
-    private init(_ entity: Entity?, _ position: CGPoint, _ control: Bool, _ shift: Bool) {
-        self.control = control
-        self.shift = shift
+    private init(_ entity: Entity?, _ mouseContact: SceneInputManager.MouseContact) {
+        self.control = mouseContact.control
+        self.shift = mouseContact.shift
         self.entity = entity
-        self.position = position
+        self.positionInScene = mouseContact.sceneStart
     }
 }

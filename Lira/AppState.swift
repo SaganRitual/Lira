@@ -2,7 +2,7 @@
 
 import Foundation
 
-final class AppState {
+final class AppState: ObservableObject {
     let game: SpriteWorld.Game
     let scene: SpriteWorld.Scene
     let sceneInputManager: SceneInputManager
@@ -13,9 +13,9 @@ final class AppState {
         let scene = SpriteWorld.Scene()
         let selectionController = SelectionController(scene)
         let selectionMarquee = SpriteWorld.SelectionMarquee(scene)
-        let dragManager = DragManager(scene, selectionController, selectionMarquee)
+        let dragManager = DragManager(selectionController, selectionMarquee)
         let game = SpriteWorld.Game(dragManager, scene)
-        let tapManager = TapManager(game, scene, selectionController)
+        let tapManager = TapManager(game, selectionController)
         let sceneInputManager = SceneInputManager(dragManager, tapManager)
 
         self.game = game

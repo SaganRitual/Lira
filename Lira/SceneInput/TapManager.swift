@@ -23,28 +23,24 @@ final class TapManager {
      See also notes in the drag functions. Managing mouse input is surprisingly tricky.
      */
     let game: SpriteWorld.Game
-    let scene: SpriteWorld.Scene
     let selectionController: SelectionController
 
-    init(_ game: SpriteWorld.Game, _ scene: SpriteWorld.Scene, _ selectionController: SelectionController) {
+    init(_ game: SpriteWorld.Game, _ selectionController: SelectionController) {
         self.game = game
-        self.scene = scene
         self.selectionController = selectionController
     }
 
-    func tap(at position: CGPoint, _ control: Bool, _ shift: Bool) {
-        let sp = scene.convertPoint(fromView: position)
-
-        guard let tappedNode = scene.getTopNode(at: sp) else {
+    func tap(_ mouseContact: SceneInputManager.MouseContact) {
+        guard let tappedNode = mouseContact.getTopNode!(mouseContact.sceneStart) else {
             // Tap on the background
-            let tapInfo = TapInfo.tap(nil, position, control, shift)
+            let tapInfo = TapInfo.tap(nil, mouseContact)
 
             // Always update the selection state first on any user input
             selectionController.dispatchTap(tapInfo)
 
             // Tell the game about tap on background, which currently
             // means only one thing: create new entities
-            let newEntity = game.newEntity(tapInfo) as! Entity & Entities.Feature.IsSelectable
+            let newEntity = game.newEntity(tapInfo) as! SelectableEntity
 
             // At least for now, we always select the newly created entity
             selectionController.newSelectableCreated(newEntity)
@@ -56,7 +52,8 @@ final class TapManager {
             return
         }
 
-        selectionController.dispatchTap(TapInfo.tap(entity, position, control, shift))
+        let tapInfo = TapInfo.tap(entity, mouseContact)
+        selectionController.dispatchTap(tapInfo)
     }
 
 }

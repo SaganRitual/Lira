@@ -4,12 +4,13 @@ import SwiftUI
 
 @main
 struct LiraApp: App {
-    let appState = AppState()
-    let sceneInfo = SceneInfo()
+    @StateObject private var appState = AppState()
+    @StateObject private var sceneInfo = SceneInfo()
 
     var body: some Scene {
         WindowGroup {
-            ContentView(appState: appState)
+            ContentView()
+                .environmentObject(appState)
                 .environmentObject(sceneInfo)
         }
     }

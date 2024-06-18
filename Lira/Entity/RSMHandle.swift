@@ -60,7 +60,7 @@ extension Entities {
                 return
             }
 
-            let ev = shape.swScene.convertPoint(fromView: dragInfo.endVertex)
+            let ev = dragInfo.endVertexInScene
 
             let delta = ev - self.position
             let distance = delta.magnitude

@@ -7,33 +7,31 @@ struct DragInfo {
     enum Phase { case begin, `continue`, end }
 
     let control: Bool
-    let endVertex: CGPoint
+    let endVertexInScene: CGPoint
     let entity: Entity?
     let phase: Phase
     let shift: Bool
-    let startVertex: CGPoint
-    let sceneNode: SKNode?
+    let startVertexInScene: CGPoint
 
-    static func begin(_ entity: Entity?, _ startVertex: CGPoint, _ endVertex: CGPoint, _ control: Bool, _ shift: Bool) -> DragInfo {
-        DragInfo(.begin, entity, startVertex, endVertex, control, shift)
+    static func begin(_ entity: Entity?, _ mouseContact: SceneInputManager.MouseContact) -> DragInfo {
+        DragInfo(.begin, entity, mouseContact)
     }
 
-    static func `continue`(_ entity: Entity?, _ startVertex: CGPoint, _ endVertex: CGPoint, _ control: Bool, _ shift: Bool) -> DragInfo {
-        DragInfo(.continue, entity, startVertex, endVertex, control, shift)
+    static func `continue`(_ entity: Entity?, _ mouseContact: SceneInputManager.MouseContact) -> DragInfo {
+        DragInfo(.continue, entity, mouseContact)
     }
 
-    static func end(_ entity: Entity?, _ startVertex: CGPoint, _ endVertex: CGPoint, _ control: Bool, _ shift: Bool) -> DragInfo {
-        DragInfo(.end, entity, startVertex, endVertex, control, shift)
+    static func end(_ entity: Entity?, _ mouseContact: SceneInputManager.MouseContact) -> DragInfo {
+        DragInfo(.end, entity, mouseContact)
     }
 
-    private init(_ phase: Phase, _ entity: Entity?, _ startVertex: CGPoint, _ endVertex: CGPoint, _ control: Bool, _ shift: Bool) {
+    private init(_ phase: Phase, _ entity: Entity?, _ mouseContact: SceneInputManager.MouseContact) {
         self.phase = phase
-        self.startVertex = startVertex
-        self.endVertex = endVertex
-        self.control = control
-        self.shift = shift
+        self.startVertexInScene = mouseContact.sceneStart
+        self.endVertexInScene = mouseContact.sceneEnd
+        self.control = mouseContact.control
+        self.shift = mouseContact.shift
 
         self.entity = entity
-        self.sceneNode = nil
     }
 }

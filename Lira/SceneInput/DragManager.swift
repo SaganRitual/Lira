@@ -2,12 +2,10 @@
 
 import Combine
 import Foundation
-import SpriteKit
 
 final class DragManager {
 
     let dragHandlePublisher = PassthroughSubject<DragInfo, Never>()
-    let scene: SpriteWorld.Scene
     let selectionController: SelectionController
     let selectionMarquee: SpriteWorld.SelectionMarquee
 
@@ -19,21 +17,19 @@ final class DragManager {
     var hotDragHandle: Entity?
 
     init(
-        _ scene: SpriteWorld.Scene,
         _ selectionController: SelectionController,
         _ selectionMarquee: SpriteWorld.SelectionMarquee
     ) {
-        self.scene = scene
         self.selectionController = selectionController
         self.selectionMarquee = selectionMarquee
     }
 
-    func drag(startVertex: CGPoint, endVertex: CGPoint, _ control: Bool, _ shift: Bool) {
+    func drag(_ mouseContact: SceneInputManager.MouseContact) {
         if currentState == .idle {
-            dragBegin(startVertex, endVertex, control, shift)
+            dragBegin(mouseContact)
         }
 
-        let dragInfo = DragInfo.continue(hotDragHandle, startVertex, endVertex, control, shift)
+        let dragInfo = DragInfo.continue(hotDragHandle, mouseContact)
 
         switch currentState {
         case .dragBackground:
@@ -45,8 +41,8 @@ final class DragManager {
         }
     }
 
-    func dragEnd(startVertex: CGPoint, endVertex: CGPoint, _ control: Bool, _ shift: Bool) {
-        let dragInfo = DragInfo.end(hotDragHandle, startVertex, endVertex, control, shift)
+    func dragEnd(_ mouseContact: SceneInputManager.MouseContact) {
+        let dragInfo = DragInfo.end(hotDragHandle, mouseContact)
 
         switch currentState {
         case .dragBackground:
@@ -70,11 +66,9 @@ private extension DragManager {
     // require the entity to be selected -- and drag-background-end -- because that's how you select
     // things with a selection marquee: by letting go of the mouse button
 
-    func dragBegin(_ startVertex: CGPoint, _ endVertex: CGPoint, _ control: Bool, _ shift: Bool) {
-        let sv = scene.convertPoint(fromView: startVertex)
-
-        guard let topNode = scene.getTopNode(at: sv) else {
-            selectionController.dispatchDrag(DragInfo.begin(nil, startVertex, endVertex, control, shift))
+    func dragBegin(_ mouseContact: SceneInputManager.MouseContact) {
+        guard let topNode = mouseContact.getTopNode!(mouseContact.sceneStart) else {
+            selectionController.dispatchDrag(DragInfo.begin(nil, mouseContact))
             currentState = .dragBackground
             return
         }
@@ -84,7 +78,7 @@ private extension DragManager {
             return
         }
 
-        let dragInfo = DragInfo.begin(entity, startVertex, endVertex, control, shift)
+        let dragInfo = DragInfo.begin(entity, mouseContact)
 
         if let hasMoveHandle = entity as? Entities.Feature.HasMoveHandle {
             // We don't actually drag game entities, we drag their drag-handles, and each drag-handle

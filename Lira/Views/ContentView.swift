@@ -3,10 +3,12 @@
 import SwiftUI
 
 struct ContentView: View {
-    let appState: AppState
-
     var body: some View {
-        SpriteWorldView(appState: appState)
-            .padding()
+        HStack {
+            SpriteWorldView()
+                .padding()
+
+            DashboardView()
+        }
     }
 }
